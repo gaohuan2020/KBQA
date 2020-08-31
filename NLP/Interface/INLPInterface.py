@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class INLPInterface(metaclass=ABCMeta):
+class INLPInterface():
     @abstractmethod
     def KeyWordsExtraction(self, sentence):
         pass

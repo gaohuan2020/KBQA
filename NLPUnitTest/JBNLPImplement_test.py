@@ -2,7 +2,7 @@ import unittest
 import NLP.Config.Setting as config
 from NLP.Implement.JBNLPImplement import JBNLPImplement
 
-class TestJBNLPFunctionImplement(unittest.TestCase):
+class TestJBNLPImplement(unittest.TestCase):
     def test_keywordExtractionSuccess(self):
         jbNLP = JBNLPImplement()
         sentence = "北京天安门"
