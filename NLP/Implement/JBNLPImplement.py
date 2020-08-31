@@ -1,10 +1,9 @@
 import os
 import jieba.analyse as analyse
-import NLPFunction.Config.Setting as config
-from NLPFunction.Interface.INLPFunctionInterface import INLPFunctionInterfaces
+import NLP.Config.Setting as config
+from NLP.Interface.INLPInterface import INLPInterface
 
-
-class JBNLPFunctionImplement(INLPFunctionInterfaces):
+class JBNLPImplement(INLPInterface):
     def __init__(self):
         self.topk = 10
         self.withWeight = False
