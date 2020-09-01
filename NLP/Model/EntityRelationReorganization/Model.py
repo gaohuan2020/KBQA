@@ -71,3 +71,4 @@ class LSTM(IModel):
         lstm_feature = self.get_lstm_features(sentence)
         alpha = self.forward_inference_alg(lstm_feature)
         return alpha
+    #TODO add viterbi algorithm for inference
