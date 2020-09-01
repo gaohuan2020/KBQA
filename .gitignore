@@ -1,4 +1,2 @@
-NLP/Config/__pycache__/Setting.cpython-36.pyc
-NLP/Implement/__pycache__/JBNLPImplement.cpython-36.pyc
-NLPUnitTest/__pycache__/JBNLPImplement_test.cpython-36.pyc
-NLP/Interface/__pycache__/INLPInterface.cpython-36.pyc
+*.pyc
+
