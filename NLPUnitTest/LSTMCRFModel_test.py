@@ -32,4 +32,5 @@ class LSTMCRFModel_test(unittest.TestCase):
         with torch.no_grad():
             precheck_sent, precheck_lable = prepare_sequence_batch(
                 training_data, word_to_ix, tag_to_ix)
-            lstm.neg_log_likelihood(precheck_sent,precheck_lable)
+            lstm.neg_log_likelihood(precheck_sent, precheck_lable)
+            lstm(precheck_sent)
