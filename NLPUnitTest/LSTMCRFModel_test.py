@@ -4,9 +4,9 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from NLP.Helper.NLPHelper import *
 from NLP.Model.EntityRelationReorganization.Model import LSTMCRF
-from NLP.Model.EntityRelationReorganization.DataSet import NERDataSet
-from NLP.Model.EntityRelationReorganization.Train import Trainer
-from NLP.Model.EntityRelationReorganization.Test import Tester
+from NLP.Model.DataSet import NERDataSet
+from NLP.Model.Train import Trainer
+from NLP.Model.Test import Tester
 from NLP.Config.Setting import *
 from tqdm import trange
 
