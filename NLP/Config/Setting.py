@@ -10,3 +10,7 @@ LSTMCRFModelConfig = dict(
                                 hiddenDim = 100,
                                 useGPU = False,
 )
+
+START_TAG = "<START>"
+STOP_TAG = "<STOP>"
+PAD_TAG = "<PAD>"
