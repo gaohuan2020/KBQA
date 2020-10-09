@@ -1,3 +1,4 @@
+from logging import exception
 import torch
 import torch.nn as nn
 from NLP.Interface.IModel import IModel
@@ -259,10 +260,24 @@ class LSTMCRF(IModel):
         gold_score = self._score_sentence_parallel(feats, tags)
         return torch.sum(forward_score - gold_score)
 
+    def forward_parallel(self, sentences):
+        feats = self._get_lstm_features_parallel(sentences)
+        scores = []
+        tag_seqs = []
+        for i in range(feats.size(0)):
+            score, tag_seq = self._viterbi_decode_new(feats[i])
+            scores.append(score)
+            tag_seqs.append(tag_seq)
+        return scores, tag_seqs
+
     def forward(self, sentence):  # dont confuse this with _forward_alg above.
         # Get the emission scores from the BiLSTM
+        if sentence.dim() >= 2:
+            if sentence.size(0) == 1:
+                sentence = sentence.squeeze(0)
+            else:
+                raise exception
         lstm_feats = self._get_lstm_features(sentence)
-
         # Find the best path, given the features.
         score, tag_seq = self._viterbi_decode_new(lstm_feats)
         return score, tag_seq

@@ -8,7 +8,8 @@ KeyWordsExtractionConfig = dict(
                                 stopWordsPath = "",
 )
 LSTMCRFModelConfig = dict(
-                                batchSize = 1,
+                                trainBatchSize = 1,
+                                testBatchSize = 1,
                                 embedDim = 100,
                                 hiddenDim = 100,
                                 useGPU = False,
