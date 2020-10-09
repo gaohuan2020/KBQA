@@ -82,10 +82,10 @@ class LSTMCRFModel_test(unittest.TestCase):
             print(data)
             print(tag)
 
-        trainer = Trainer(self.model, self.optimizer, training_data_loader)
-        trainer.Train()
+        trainer = Trainer(self.model, self.optimizer)
+        trainer.Train(training_data_loader)
         tester = Tester(self.model)
         precheck_sent = prepare_sequence(self.training_data[0][0],
                                          self.word_to_ix)
-        predict = tester.Eval(precheck_sent)
+        predict = tester.Predict(precheck_sent)
         tester.Test(testing_data_loader)

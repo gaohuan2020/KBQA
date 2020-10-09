@@ -1,7 +1,8 @@
 from NLP.Helper.NLPHelper import word_to_idx
 import torch
+from NLP.Interface.ITester import ITester
 
-class Tester():
+class Tester(ITester):
     def __init__(self, model):
         self.model = model
 
@@ -10,7 +11,7 @@ class Tester():
             with torch.no_grad():
                 predict = self.model.forward_parallel(sentence)
 
-    def Eval(self, data):
+    def Predict(self, data):
         with torch.no_grad():
             predict = self.model(data)
             return predict
