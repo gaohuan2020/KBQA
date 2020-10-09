@@ -8,10 +8,13 @@ KeyWordsExtractionConfig = dict(
                                 stopWordsPath = "",
 )
 LSTMCRFModelConfig = dict(
-                                batchSize = 16,
+                                batchSize = 1,
                                 embedDim = 100,
                                 hiddenDim = 100,
                                 useGPU = False,
+                                threads = 1,
+                                isShuffle = True,
+                                epoch = 100,
 )
 
 START_TAG = "<START>"

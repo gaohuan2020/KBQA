@@ -1,8 +1,12 @@
 import unittest
 import torch
 import torch.optim as optim
+from torch.utils.data import DataLoader
 from NLP.Helper.NLPHelper import *
 from NLP.Model.EntityRelationReorganization.Model import LSTMCRF
+from NLP.Model.EntityRelationReorganization.DataSet import NERDataSet
+from NLP.Model.EntityRelationReorganization.Train import Trainer
+from NLP.Model.EntityRelationReorganization.Test import Tester
 from NLP.Config.Setting import *
 from tqdm import trange
 
@@ -49,3 +53,18 @@ class LSTMCRFModel_test(unittest.TestCase):
             precheck_sent  = prepare_sequence(self.training_data[0][0], self.word_to_ix)
             precheck_tags = torch.tensor([self.tag_to_ix[t] for t in self.training_data[0][1]], dtype=torch.long)
             predict = self.model(precheck_sent)
+
+        
+    @classmethod
+    def test_dataLoaderAndTrainer(self):
+        train_dataset = NERDataSet(self.word_to_ix,self.tag_to_ix, self.training_data)
+        training_data_loader = DataLoader(train_dataset,
+                                            batch_size=LSTMCRFModelConfig['batchSize'],
+                                            num_workers=LSTMCRFModelConfig['threads'],
+                                            shuffle=LSTMCRFModelConfig['isShuffle'])
+        for data, tag in training_data_loader:
+            print(data)
+            print(tag)
+        
+        trainer = Trainer(self.model, self.optimizer, training_data_loader)
+        trainer.Train()
