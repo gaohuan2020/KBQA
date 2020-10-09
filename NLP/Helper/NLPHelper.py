@@ -23,7 +23,7 @@ def CheckKeyInConfig(key, config, type):
 def prepare_sequence(seq, to_ix):
     idxs = [to_ix[w] for w in seq]
     return torch.tensor(idxs, dtype=torch.long)
-    
+
 def prepare_sequence_batch(data ,word_to_ix, tag_to_ix):
     seqs = [i[0] for i in data]
     tags = [i[1] for i in data]
@@ -38,3 +38,12 @@ def prepare_sequence_batch(data ,word_to_ix, tag_to_ix):
     idxs_pad = torch.tensor([[word_to_ix[w] for w in seq] for seq in seqs_pad], dtype=torch.long)
     tags_pad = torch.tensor([[tag_to_ix[t] for t in tag] for tag in tags_pad], dtype=torch.long)
     return idxs_pad, tags_pad
+
+def word_to_idx(training_data):
+    word_to_ix = {}
+    word_to_ix[PAD_TAG] = 0
+    for sentence, _ in training_data:
+        for word in sentence:
+            if word not in word_to_ix:
+                word_to_ix[word] = len(word_to_ix)
+    return word_to_ix
