@@ -281,3 +281,4 @@ class LSTMCRF(IModel):
         # Find the best path, given the features.
         score, tag_seq = self._viterbi_decode_new(lstm_feats)
         return score, tag_seq
+#TODO Add GPU Support

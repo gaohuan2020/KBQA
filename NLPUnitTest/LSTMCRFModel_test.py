@@ -89,3 +89,4 @@ class LSTMCRFModel_test(unittest.TestCase):
                                          self.word_to_ix)
         predict = tester.Predict(precheck_sent)
         tester.Test(testing_data_loader)
+#TODO Add assertion for test

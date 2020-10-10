@@ -23,3 +23,4 @@ class JBNLPImplement(INLPInterface):
                 if config.KeyWordsExtractionConfig["withWeight"] != "":
                     self.withWeight = int(config.KeyWordsExtractionConfig["withWeight"])
         return analyse.extract_tags(sentence, topK=self.topk, withWeight=self.withWeight)
+#TODO Add word segment with dict
